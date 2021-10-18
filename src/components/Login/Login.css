@@ -1,0 +1,10 @@
+.login-icon{
+    font-size: 30px;
+    margin: 7px;
+}
+.login-icon:hover{
+    cursor: pointer;
+}
+.google{
+    color: #EA3D2D;
+}

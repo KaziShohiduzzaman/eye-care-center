@@ -1,0 +1,21 @@
+.footer-bg{
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+.footer-section{
+    margin-top: 50px;
+}
+.footer-section h2{
+    color: #ffbf00;
+}
+.icon-color{
+    color:#ffbf00 ;
+}
+.footer-link{
+    text-decoration: none;
+    color: white;
+}
+.img-sized{
+    height: 100px;
+}

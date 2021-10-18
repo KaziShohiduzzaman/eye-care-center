@@ -1,0 +1,50 @@
+[
+    {
+        "key": 1,
+        "name": "Retina Repair",
+        "cost": 199,
+        "image": "https://www.retinasocal.com/3d-images/vitreoretinal-surgery.jpg",
+        "description": "Put numbing medicine in your eye. Insert a tiny needle into your eye and remove a small amount of fluid. Inject a small amount of air into your eye. Use laser or freeze treatment to repair any holes or tears in your retina.",
+        "rating": 4
+    },
+    {
+        "key": 2,
+        "name": "Glaucoma and Cornea",
+        "cost": 199,
+        "image": "https://www.glaucoma.org/uploads/page-8-fluid-pathway-open-angle_650.jpg",
+        "description": "In open angle glaucoma, the iris meets the cornea normally, allowing the fluid from inside the eye to drain, thus relieving the internal pressure. Where this angle is narrowed or closed, pressure increases over time, causing damage to the optic nerve, leading to blindness.",
+        "rating": 4
+    },
+    {
+        "key": 3,
+        "name": "Dry Eye Surgery",
+        "cost": 205,
+        "image": "http://medicineworld.org/images/blogs/3-2008/lasik-eye-surgery-920.jpg",
+        "description": "A procedure called punctal occlusion can be used to permanently or temporarily close off your tear drainage channels, allowing you to retain your own natural tears, without the need for eye drops.",
+        "rating": 4
+    },
+    {
+        "key": 4,
+        "name": "cornea Transplant",
+        "cost": 230,
+        "image": "https://content.rendia.com/leo/em/2653284e-4529-4f3f-4f00-40ac4f3b4feb/1583351734/NAR_Trt_CorTrns_fullscreen_poster.jpg",
+        "description": "A cornea transplant is an operation to remove all or part of a damaged cornea and replace it with healthy donor tissue. A cornea transplant is often referred to as keratoplasty or a corneal graft. It can be used to improve sight, relieve pain and treat severe infection or damage.",
+        "rating": 4
+    },
+    {
+        "key": 5,
+        "name": "Surgical procedure",
+        "cost": 300,
+        "image": "https://cdn-prod.medicalnewstoday.com/content/images/articles/314/314009/a-medical-team-performing-surgery.jpg",
+        "description": "The act of performing surgery may be called a surgical procedure, operation, or simply surgery. In this context, the verb operate means to perform surgery. The adjective surgical means pertaining to surgery; e.g. surgical instruments or surgical nurse.",
+        "rating": 4
+    },
+    {
+        "key": 6,
+        "name": "Laser Surgery",
+        "cost": 200,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZUD7xyJ4prSogseoerSy2igCCf7dpXw_WYw&usqp=CAU",
+        "description": "Laser surgery is a type of surgery that uses special light beams instead of instruments for surgical procedures. LASER stands for Light Amplification by the Stimulated Emission of Radiation. Lasers were first developed in 1960 ",
+        "rating": 4
+    }
+]
