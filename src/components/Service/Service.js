@@ -14,13 +14,13 @@ const Service = (props) => {
                         <Card.Text>
                             {description.slice(0, 150)}
                         </Card.Text>
-                        <Link to="/">
-                            <button className='btn btn-warning'>Details</button>
+                        <Link className='text-decoration-none' to={`details/${key}`}>
+                            <button className='btn btn-warning d-block mx-auto'>Details</button>
                         </Link>
                     </Card.Body>
                 </Card>
             </Col>
-        </div>
+        </div >
     );
 };
 

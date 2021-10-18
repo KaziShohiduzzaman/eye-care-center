@@ -5,29 +5,40 @@ import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import AboutUs from './components/AboutUs/AboutUs';
-
+import AuthProvider from './context/authProvider';
+import Contact from './components/Contact/Contact';
+import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
+import Details from './components/Details/Details';
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <NavSpace></NavSpace>
-        <Switch>
-          <Route exact path='/'>
-            <Home></Home>
-          </Route>
-          <Route path='/home'>
-            <Home></Home>
-          </Route>
-          <Route path='/login'>
-            <Login></Login>
-          </Route>
-          <Route path='/about'>
-            <AboutUs></AboutUs>
-          </Route>
-        </Switch>
-        <Footer></Footer>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <NavSpace></NavSpace>
+          <Switch>
+            <Route exact path='/'>
+              <Home></Home>
+            </Route>
+            <Route path='/home'>
+              <Home></Home>
+            </Route>
+            <Route path='/login'>
+              <Login></Login>
+            </Route>
+            <PrivateRoute path='/details/:detailsId'>
+              <Details></Details>
+            </PrivateRoute>
+            <PrivateRoute path='/about'>
+              <AboutUs></AboutUs>
+            </PrivateRoute>
+            <PrivateRoute path='/contact'>
+              <Contact></Contact>
+            </PrivateRoute>
+          </Switch>
+          <Footer></Footer>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

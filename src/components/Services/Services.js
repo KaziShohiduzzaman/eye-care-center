@@ -5,7 +5,6 @@ import Service from '../Service/Service';
 import './Services.css'
 const Services = () => {
     const [services] = useServices()
-    console.log(services);
     return (
         <div className='w-100 my-4 p-5'>
             <p className='text-center p-4 text-color-services'>Services</p>

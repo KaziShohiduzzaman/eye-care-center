@@ -1,7 +1,25 @@
-import useFirebase from '../../hooks/useFirebase';
+import { useHistory, useLocation } from 'react-router';
+import useAuth from '../../hooks/useAuth';
 import './Login.css'
 const Login = () => {
-    const { signInWithGoogle, error, setError, processLogin, createNewUser, email, setEmail, password, setPassword, isLogin, setIsLogin } = useFirebase()
+    const { signInWithGoogle, error, setError, isLogin, setIsLogin, processLogin,
+        createNewUser, email, setEmail, password, setPassword, handleNameChange, signInWithGithub } = useAuth()
+
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_URI = location.state?.from || '/home'
+
+
+
+    const handleGoogleLogIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                history.push(redirect_URI)
+            }).catch((error) => {
+                setError(error.message)
+            });
+    }
+
 
     const handleEmail = e => {
         setEmail(e.target.value)
@@ -19,13 +37,10 @@ const Login = () => {
             return;
         }
         isLogin ? processLogin(email, password) : createNewUser(email, password)
-
     }
-
     const toggleLogIn = e => {
         setIsLogin(e.target.checked);
     }
-
     return (
         <div>
             <div className="container">
@@ -38,6 +53,16 @@ const Login = () => {
                             <input onBlur={handleEmail} type="email" className="form-control" id="inputEmail3" required />
                         </div>
                     </div>
+
+                    {
+                        !isLogin && <div className="row mb-3">
+                            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Name</label>
+                            <div className="col-sm-10">
+                                <input onBlur={handleNameChange} type="text" className="form-control" id="inputName" required />
+                            </div>
+                        </div>
+                    }
+
                     <div className="row mb-3">
                         <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
                         <div className="col-sm-10">
@@ -55,11 +80,12 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="row mb-3 text-danger">{error}</div>
-                    <button type="submit" className="btn btn-warning d-block mx-auto">{isLogin ? 'Log in' : 'Sign in'}</button>
+                    <button type="submit" className="btn btn-warning d-block mx-auto btn-lg">{isLogin ? 'Log in' : 'Sign Up'}</button>
                 </form>
                 <p className='text-center mt-3'><small>_____Sign in with_____</small></p>
                 <div className='text-center mb-4'>
-                    <span onClick={signInWithGoogle}><i class="fab fa-google login-icon google"></i></span>
+                    <span onClick={handleGoogleLogIn}><i class="fab fa-google login-icon google"></i></span>
+                    <span onClick={signInWithGithub}><i class="fab fa-github login-icon"></i></span>
                 </div>
             </div >
         </div>

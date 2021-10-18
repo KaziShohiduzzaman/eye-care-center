@@ -1,0 +1,13 @@
+.check-Mark{
+    display: flex;
+    justify-content: space-around;
+}
+.bg-about{
+    background-color: lightyellow;
+}
+.icon-about{
+    color: rgb(255, 191, 0);
+}
+.bg-link{
+    background-color: lightyellow;
+}

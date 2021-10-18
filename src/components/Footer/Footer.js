@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
                 </Col>
             </Row>
-            <div style={{ backgroundColor: '#ffbf00' }} className='p-3 text-white text-center'>
+            <div style={{ backgroundColor: '#ffbf00' }} className='py-3 text-white text-center'>
                 <p className='text-black mt-2'>All credit goes to <span className='text-black'>Kazi Shohiduzzaman</span></p>
             </div>
 
