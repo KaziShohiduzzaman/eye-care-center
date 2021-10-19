@@ -9,6 +9,7 @@ import AuthProvider from './context/authProvider';
 import Contact from './components/Contact/Contact';
 import PrivateRoute from './components/Login/PrivateRoute/PrivateRoute';
 import Details from './components/Details/Details';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
             <PrivateRoute path='/contact'>
               <Contact></Contact>
             </PrivateRoute>
+            <Route path='*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
           <Footer></Footer>
         </BrowserRouter>

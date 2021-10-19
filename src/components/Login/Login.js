@@ -3,7 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import './Login.css'
 const Login = () => {
     const { signInWithGoogle, error, setError, isLogin, setIsLogin, processLogin,
-        createNewUser, email, setEmail, password, setPassword, handleNameChange, signInWithGithub, setUserName, name } = useAuth()
+        createNewUser, email, setEmail, password, setPassword, handleNameChange, setUserName, name } = useAuth()
 
     const location = useLocation();
     const history = useHistory();
@@ -59,26 +59,26 @@ const Login = () => {
     }
     return (
         <div>
-            <div className="container">
+            <div className="container w-50">
                 <form onSubmit={handleRegistration}>
+
                     <div className="row my-3">
-                        <h1 className='text-warning text-center my-3 underlined'><u>
+                        <h1 className='text-danger text-center my-3 underlined'><u>
                             Please {isLogin ? 'Log in' : 'Register'}</u></h1>
+
+                        {
+                            !isLogin && <div className="row mb-3">
+                                <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Name</label>
+                                <div className="col-sm-10">
+                                    <input onBlur={handleNameChange} type="text" className="form-control" id="inputName" required />
+                                </div>
+                            </div>
+                        }
                         <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
                         <div className="col-sm-10">
                             <input onBlur={handleEmail} type="email" className="form-control" id="inputEmail3" required />
                         </div>
                     </div>
-
-                    {
-                        !isLogin && <div className="row mb-3">
-                            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Name</label>
-                            <div className="col-sm-10">
-                                <input onBlur={handleNameChange} type="text" className="form-control" id="inputName" required />
-                            </div>
-                        </div>
-                    }
-
                     <div className="row mb-3">
                         <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
                         <div className="col-sm-10">
@@ -101,7 +101,6 @@ const Login = () => {
                 <p className='text-center mt-3'><small>_____Sign in with_____</small></p>
                 <div className='text-center mb-4'>
                     <span onClick={handleGoogleLogIn}><i class="fab fa-google login-icon google"></i></span>
-                    <span onClick={signInWithGithub}><i class="fab fa-github login-icon"></i></span>
                 </div>
             </div >
         </div>

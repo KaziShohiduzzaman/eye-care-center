@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, GithubAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Firebase/firebase.init";
 
@@ -14,22 +14,12 @@ const useFirebase = () => {
     const [isLogin, setIsLogin] = useState(false);
 
     const googleProvider = new GoogleAuthProvider();
-    const githubProvider = new GithubAuthProvider();
     const auth = getAuth();
 
     const signInWithGoogle = () => {
         setIsLoading(true);
         return signInWithPopup(auth, googleProvider);
 
-    }
-    const signInWithGithub = () => {
-        signInWithPopup(auth, githubProvider)
-            .then((result) => {
-                const user = result.user;
-                setUsers(user)
-            }).catch((error) => {
-                setError(error.message)
-            });
     }
     const processLogin = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
@@ -98,7 +88,6 @@ const useFirebase = () => {
         logOut,
         setIsLogin,
         isLoading,
-        signInWithGithub,
         processLogin,
         createNewUser,
         email,
