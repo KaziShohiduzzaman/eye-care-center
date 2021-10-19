@@ -1,11 +1,14 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, Spinner } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import navIcon from '../../images/eye-logo.png'
 import './NavSpace.css'
 const NavSpace = () => {
-    const { users, logOut } = useAuth();
+    const { users, logOut, isLoading } = useAuth();
+    if (isLoading) {
+        return <Spinner className='d-block mx-auto my-4' animation="border" variant="warning" />
+    }
     return (
         <>
             <Navbar className='px-5 bg-nav' expand="lg" sticky="top" variant="dark">
