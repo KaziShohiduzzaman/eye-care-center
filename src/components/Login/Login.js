@@ -3,7 +3,7 @@ import useAuth from '../../hooks/useAuth';
 import './Login.css'
 const Login = () => {
     const { signInWithGoogle, error, setError, isLogin, setIsLogin, processLogin,
-        createNewUser, email, setEmail, password, setPassword, handleNameChange, signInWithGithub } = useAuth()
+        createNewUser, email, setEmail, password, setPassword, handleNameChange, signInWithGithub, setUserName, name } = useAuth()
 
     const location = useLocation();
     const history = useHistory();
@@ -31,12 +31,28 @@ const Login = () => {
 
     const handleRegistration = e => {
         e.preventDefault();
-        console.log(email, password);
         if (password.length < 6) {
             setError('Password must be 6 characters')
             return;
         }
-        isLogin ? processLogin(email, password) : createNewUser(email, password)
+
+        isLogin ? processLogin(email, password)
+            .then(() => {
+                history.push(redirect_URI);
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+
+            :
+            createNewUser(email, password)
+                .then(() => {
+                    history.push('/home');
+                    setUserName(name);
+                })
+                .catch((error) => {
+                    setError(error.message);
+                })
     }
     const toggleLogIn = e => {
         setIsLogin(e.target.checked);

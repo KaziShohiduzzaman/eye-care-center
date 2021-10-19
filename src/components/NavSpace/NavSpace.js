@@ -29,7 +29,7 @@ const NavSpace = () => {
                         <Nav.Link href="/contact">
                             <NavLink className='text-warning text-decoration-none' to="/contact">Contact</NavLink>
                         </Nav.Link>
-                        {users.email ?
+                        {users?.email ?
                             <Nav.Link>
                                 <a className='text-warning text-decoration-none text-danger' onClick={logOut} href="/login">Log Out</a>
                             </Nav.Link>
@@ -41,11 +41,11 @@ const NavSpace = () => {
                         {
                             users?.email &&
                             <Nav.Link>
-                                <span className='user-name'>{users.displayName}</span>
+                                <span className='user-name'>{users?.displayName}</span>
                             </Nav.Link>
                         }
                         <Nav.Link>
-                            <img className='user-img img-fluid' src={users.photoURL} alt="" />
+                            <img className='user-img img-fluid' src={users?.photoURL} alt="" />
                         </Nav.Link>
 
                     </Nav>

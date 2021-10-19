@@ -32,33 +32,36 @@ const useFirebase = () => {
             });
     }
     const processLogin = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                setUsers(user)
-                setError('');
-            })
-            .catch((error) => {
-                setError(error.message)
-            });
+        return signInWithEmailAndPassword(auth, email, password)
+        // .then((userCredential) => {
+        //     const user = userCredential.user;
+        //     setUsers(user)
+        //     setError('');
+        // })
+        // .catch((error) => {
+        //     setError(error.message)
+        // });
     }
-    const setUserName = () => {
+    const setUserName = (name) => {
         updateProfile(auth.currentUser, { displayName: name })
-            .then(result => { })
+            .then((result) => {
+                setUsers(result);
+            })
+            .finally(() => setIsLoading(false));
 
     }
     const createNewUser = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                setUsers(user)
-                setError('');
-                setUserName();
-            })
-            .catch((error) => {
-                setError(error.message)
-                // ..
-            });
+        return createUserWithEmailAndPassword(auth, email, password);
+        // .then((userCredential) => {
+        //     const user = userCredential.user;
+        //     setUsers(user)
+        //     setError('');
+        //     setUserName();
+        // })
+        // .catch((error) => {
+        //     setError(error.message)
+        //     // ..
+        // });
     }
 
     const logOut = () => {
@@ -70,16 +73,17 @@ const useFirebase = () => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        const unSubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUsers(user)
             }
             else {
-                setUsers({})
+                setUsers(user)
             }
             setIsLoading(false);
         });
-    }, [])
+        return () => unSubscribe;
+    }, [auth, users])
 
     const handleNameChange = e => {
         setName(e.target.value);
@@ -102,7 +106,9 @@ const useFirebase = () => {
         password,
         setPassword,
         isLogin,
-        handleNameChange
+        handleNameChange,
+        setUserName,
+        name
     }
 }
 export default useFirebase;
